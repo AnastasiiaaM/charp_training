@@ -38,6 +38,8 @@ namespace Addressbook_Web_Test
             s3.Radius = 15;
 
             Assert.AreEqual(s1.Radius, 15);
+
+            s2.Colored = true;
         }
     }
 }

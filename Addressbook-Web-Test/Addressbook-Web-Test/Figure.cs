@@ -10,7 +10,7 @@ namespace Addressbook_Web_Test
     internal class Figure
     {
         private bool colored = false;
-        public bool Colered
+        public bool Colored
         {
             get
             {
