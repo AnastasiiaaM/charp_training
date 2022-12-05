@@ -66,32 +66,32 @@ namespace Addressbook_Web_Test
             driver.FindElement(By.LinkText("group page")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
         }
-        private bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
+          private bool IsElementPresent(By by)
+          {
+              try
+              {
+                  driver.FindElement(by);
+                  return true;
+              }
+              catch (NoSuchElementException)
+              {
+                  return false;
+              }
+          }
 
-        private bool IsAlertPresent()
-        {
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException)
-            {
-                return false;
-            }
-        }
-
+          private bool IsAlertPresent()
+          {
+              try
+              {
+                  driver.SwitchTo().Alert();
+                  return true;
+              }
+              catch (NoAlertPresentException)
+              {
+                  return false;
+              }
+          }
+        
         private string CloseAlertAndGetItsText()
         {
             try
@@ -112,6 +112,6 @@ namespace Addressbook_Web_Test
             {
                 acceptNextAlert = true;
             }
-        }
+        }  
     }
 }
