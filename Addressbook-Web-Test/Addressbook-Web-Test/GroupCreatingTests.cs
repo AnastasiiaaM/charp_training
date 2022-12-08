@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupCreationTests
+    public class GroupCreatingTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -41,7 +41,7 @@ namespace WebAddressbookTests
         }
 
         [Test]
-        public void GroupCreationTest()
+        public void GroupCreatingTest()
         {
             OpenHomePage();
             Login(new AccountData("admin", "secret"));

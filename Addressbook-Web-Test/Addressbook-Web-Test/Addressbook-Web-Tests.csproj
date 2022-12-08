@@ -68,7 +68,7 @@
     <Compile Include="Square.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GroupCreationTests.cs" />
+    <Compile Include="GroupCreatingTests.cs" />
     <Compile Include="ContactCreatingTests.cs" />
   </ItemGroup>
   <ItemGroup>
