@@ -60,16 +60,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountData.cs" />
-    <Compile Include="Circle.cs" />
+    <Compile Include="Modal\AccountData.cs" />
+    <Compile Include="appmanager\ApplicationManager.cs" />
+    <Compile Include="projectFigure\Circle.cs" />
     <Compile Include="ContactData.cs" />
-    <Compile Include="Figure.cs" />
-    <Compile Include="GroupData.cs" />
-    <Compile Include="Square.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="projectFigure\Figure.cs" />
+    <Compile Include="Modal\GroupData.cs" />
+    <Compile Include="appmanager\GroupHelper.cs" />
+    <Compile Include="appmanager\HelperBase.cs" />
+    <Compile Include="appmanager\LoginLogoutHelper.cs" />
+    <Compile Include="appmanager\NavigationHelper.cs" />
+    <Compile Include="projectFigure\Square.cs" />
+    <Compile Include="tests\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GroupCreatingTests.cs" />
+    <Compile Include="tests\GroupCreatingTests.cs" />
     <Compile Include="ContactCreatingTests.cs" />
+    <Compile Include="tests\GroupRemovalTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
