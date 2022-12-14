@@ -3,61 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using WebAddressbookTests;
 
 namespace WebAddressbookTests
 {
-    public class TestBase1
+    public class ContactHelper: HelperBase
     {
-        protected IWebDriver driver;
-        private StringBuilder verificationErrors;
-        protected string baseURL;
-        private bool acceptNextAlert = true;
-
-        [SetUp]
-        public void SetupTest()
+        public ContactHelper(ApplicationManager manager)
+            : base(manager)
         {
-            driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook/";
-            verificationErrors = new StringBuilder();
         }
 
-        [TearDown]
-        public void TeardownTest()
+        public ContactHelper Create(ContactData contact)
         {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
+            manager.Navigator.GoToAddNewPage();
+
+            FillNewContactForm(contact);
+            SaveNewContact();
+            ReturnToHomePage();
+            return this;
         }
 
-        protected void GoToHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL);
-        }
-        protected void Login(AccountData account)
-        {
-            driver.FindElement(By.Name("user")).Click();
-            driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            driver.FindElement(By.Name("pass")).Click();
-            driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
-            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-        }
-        protected void GoToAddNewPage()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
-        }
+
         protected void FillNewContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Click();
@@ -103,8 +72,6 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
         }
-
-
         protected void SaveNewContact()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();

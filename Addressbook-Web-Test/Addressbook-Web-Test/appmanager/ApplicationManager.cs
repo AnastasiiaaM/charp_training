@@ -18,6 +18,7 @@ namespace WebAddressbookTests
         protected LoginLogoutHelper loginHelper;
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         public ApplicationManager()
         {
@@ -66,6 +67,13 @@ namespace WebAddressbookTests
             get
             {
                 return groupHelper;
+            }
+        }
+        public ContactHelper Contact
+        {
+            get
+            {
+                return contactHelper;
             }
         }
     }

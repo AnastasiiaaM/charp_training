@@ -11,21 +11,17 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreatingTests : TestBase1
+    public class ContactCreatingTests : TestBase
     {
 
         [Test]
         public void ContactCreatingTest()
         {
-            GoToHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToAddNewPage();
             ContactData contact = new ContactData("asdf", "asdf");
             contact.Email = "asdf@s.s";
-            FillNewContactForm(contact);
-            SaveNewContact();
-            ReturnToHomePage();
-            Logout();
+
+            app.Contact.Create(contact);
+            app.Auth.Logout();
         }
     }
 }
