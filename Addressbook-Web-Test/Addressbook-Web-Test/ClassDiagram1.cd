@@ -10,12 +10,9 @@
   <Class Name="WebAddressbookTests.TestBase">
     <Position X="2" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAABAAAJKAQAAIIICAAAAQAAAAACA=</HashCode>
       <FileName>tests\TestBase.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="app" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="WebAddressbookTests.LoginLogoutHelper" Collapsed="true">
     <Position X="4.75" Y="2.5" Width="1.5" />

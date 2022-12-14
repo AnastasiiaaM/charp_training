@@ -71,6 +71,7 @@
     <Compile Include="appmanager\LoginLogoutHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
     <Compile Include="projectFigure\Square.cs" />
+    <Compile Include="TestBase1.cs" />
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="tests\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
