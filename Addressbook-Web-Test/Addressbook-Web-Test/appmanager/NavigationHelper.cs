@@ -13,8 +13,8 @@ namespace WebAddressbookTests
     {
         public string baseURL;
 
-        public NavigationHelper(WebDriver driver, string baseURL) 
-            : base(driver)
+        public NavigationHelper(ApplicationManager manager, string baseURL) 
+            : base(manager)
         {
             this.baseURL = baseURL;
         }

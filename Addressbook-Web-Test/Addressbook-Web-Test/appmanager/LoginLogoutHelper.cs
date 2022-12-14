@@ -11,8 +11,8 @@ namespace WebAddressbookTests
 {
     public class LoginLogoutHelper : HelperBase
     {
-        public LoginLogoutHelper(WebDriver driver)
-            : base(driver)
+        public LoginLogoutHelper(ApplicationManager manager)
+            : base(manager)
         {
         }
 
