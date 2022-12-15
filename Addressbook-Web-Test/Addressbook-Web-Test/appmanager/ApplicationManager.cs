@@ -27,6 +27,7 @@ namespace WebAddressbookTests
             loginHelper = new LoginLogoutHelper(this);
             navigator = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
         }
 
         public WebDriver Driver 

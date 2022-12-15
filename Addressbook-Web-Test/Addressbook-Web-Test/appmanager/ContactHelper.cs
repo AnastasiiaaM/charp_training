@@ -20,14 +20,59 @@ namespace WebAddressbookTests
         {
             manager.Navigator.GoToAddNewPage();
 
-            FillNewContactForm(contact);
+            FillContactForm(contact);
             SaveNewContact();
             ReturnToHomePage();
             return this;
         }
 
+        public ContactHelper Modify(int v, ContactData newContact)
+        {
+ 
 
-        protected void FillNewContactForm(ContactData contact)
+            SelectContactForEdit(v);
+            FillContactForm(newContact);
+            SubmitContactModification();
+            ReturnToHomePage();
+            return this;
+        }
+
+        public ContactHelper Remove()
+        {
+            manager.Navigator.GoToHomePage();
+
+            SelectContact();
+            RemoveContact();
+            ReturnToHomePage();
+            return this;
+        }
+
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+
+        public ContactHelper SelectContact()
+        {
+            driver.FindElement(By.Id("3")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[22]")).Click();
+            return this;
+        }
+
+        public ContactHelper SelectContactForEdit(int index)
+        {
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr["+ index +"]/td[8]/a/img")).Click();
+            return this;
+        }
+
+        public ContactHelper FillContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -71,18 +116,24 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("notes")).Click();
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
+            return this;
         }
-        protected void SaveNewContact()
+        public ContactHelper SaveNewContact()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            return this;
         }
-        protected void ReturnToHomePage()
+        public ContactHelper ReturnToHomePage()
         {
             driver.FindElement(By.LinkText("home")).Click();
+            return this;
         }
-        protected void Logout()
+        public ContactHelper Logout()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
+            return this;
         }
+
+
     }
 }

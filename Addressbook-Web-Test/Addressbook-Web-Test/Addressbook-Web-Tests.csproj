@@ -63,8 +63,8 @@
     <Compile Include="appmanager\ContactHelper.cs" />
     <Compile Include="Modal\AccountData.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
+    <Compile Include="Modal\ContactData .cs" />
     <Compile Include="projectFigure\Circle.cs" />
-    <Compile Include="ContactData.cs" />
     <Compile Include="projectFigure\Figure.cs" />
     <Compile Include="Modal\GroupData.cs" />
     <Compile Include="appmanager\GroupHelper.cs" />
@@ -72,6 +72,8 @@
     <Compile Include="appmanager\LoginLogoutHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
     <Compile Include="projectFigure\Square.cs" />
+    <Compile Include="tests\ContactModificationTests.cs" />
+    <Compile Include="tests\ContactRemovalTests.cs" />
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="tests\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
