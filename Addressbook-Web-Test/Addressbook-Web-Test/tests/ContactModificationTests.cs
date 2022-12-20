@@ -17,7 +17,6 @@ namespace WebAddressbookTests
             newContact.Email = "new@s.s";
 
             app.Contact.Modify(3, newContact);
-            app.Auth.Logout();
         }
 
         [Test]
@@ -27,7 +26,6 @@ namespace WebAddressbookTests
             newContact.Middlename = "sdfgsdf";
 
             app.Contact.Modify(4, newContact);
-            app.Auth.Logout();
         }
     }
 }

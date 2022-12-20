@@ -21,7 +21,6 @@ namespace WebAddressbookTests
             contact.Email = "asdf@s.s";
 
             app.Contact.Create(contact);
-            app.Auth.Logout();
         }
     }
 }

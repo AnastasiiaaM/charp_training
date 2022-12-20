@@ -37,11 +37,11 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Remove()
+        public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToHomePage();
 
-            SelectContact();
+            SelectContactForEdit(v);
             RemoveContact();
             ReturnToHomePage();
             return this;
@@ -49,14 +49,7 @@ namespace WebAddressbookTests
 
         public ContactHelper RemoveContact()
         {
-            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            driver.SwitchTo().Alert().Accept();
-            return this;
-        }
-
-        public ContactHelper SelectContact()
-        {
-            driver.FindElement(By.Id("3")).Click();
+            driver.Navigate().GoToUrl("http://localhost/addressbook/delete.php?id=5&update=Delete");
             return this;
         }
 
