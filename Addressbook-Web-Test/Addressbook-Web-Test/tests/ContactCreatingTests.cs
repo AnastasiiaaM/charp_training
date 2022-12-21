@@ -7,11 +7,12 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using WebAddressbookTests;
 
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreatingTests : TestBase
+    public class ContactCreatingTests : AuthTestBase
     {
 
         [Test]

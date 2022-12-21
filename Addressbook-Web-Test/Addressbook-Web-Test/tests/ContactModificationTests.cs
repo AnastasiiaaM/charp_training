@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using WebAddressbookTests;
 
 namespace WebAddressbookTests
 {
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
 
         [Test]

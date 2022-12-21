@@ -4,11 +4,12 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using WebAddressbookTests;
 
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupCreatingTests : TestBase
+    public class GroupCreatingTests : AuthTestBase
     {
         [Test]
         public void GroupCreatingTest()
