@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
@@ -47,6 +48,11 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public bool CheckIsThereContact()
+        {
+            manager.Navigator.GoToAddNewPage();
+            return IsElementPresent(By.Name("selected[]"));
+        }
         public ContactHelper RemoveContact()
         {
             driver.Navigate().GoToUrl("http://localhost/addressbook/delete.php?id=5&update=Delete");
@@ -61,14 +67,6 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContactForEdit(int index)
         {
-            if (IsElementPresent(By.Name("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")))
-            {
-                driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")).Click();
-            }
-
-            ContactData contact = new ContactData("asdf", "asdf");
-            contact.Email = "asdf@s.s";
-            Create(contact);
             driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")).Click();
             return this;
         }
