@@ -19,9 +19,8 @@ namespace WebAddressbookTests
 
             {
                 app.Contact.Create(contact);
-
-                app.Contact.Remove(2);
             }
+            app.Contact.Remove(2);
         }
     }
 }
