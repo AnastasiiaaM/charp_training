@@ -67,7 +67,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContactForEdit(int index)
         {
-            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + (index + 1) + "]/td[8]/a/img")).Click();
             return this;
         }
 
@@ -105,6 +105,19 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name = 'entry']"));
+            foreach (IWebElement element in elements)
+            {
+                var lastName = element.FindElement(By.XPath("td[2]")).Text;
+                var firstName = element.FindElement(By.XPath("td[3]")).Text;
+                contacts.Add(new ContactData(lastName, firstName));
+            }
+            return contacts;
+        }
 
     }
 }

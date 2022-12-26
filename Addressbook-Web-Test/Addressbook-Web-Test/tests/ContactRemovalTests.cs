@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -12,7 +14,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactRemovalTest()
         {
-            ContactData contact = new ContactData("asdf", "asdf");
+            ContactData contact = new ContactData("rem", "asdf");
             contact.Email = "asdf@s.s";
 
             if (!app.Contact.CheckIsThereContact())
@@ -20,7 +22,14 @@ namespace WebAddressbookTests
             {
                 app.Contact.Create(contact);
             }
-            app.Contact.Remove(2);
+
+            List<ContactData> oldContacts = app.Contact.GetContactList();
+
+            app.Contact.Remove(1);
+
+            List<ContactData> newContacts = app.Contact.GetContactList();
+            oldContacts.RemoveAt(0);
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
