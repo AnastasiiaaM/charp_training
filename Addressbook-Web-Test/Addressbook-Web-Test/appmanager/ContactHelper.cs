@@ -50,12 +50,12 @@ namespace WebAddressbookTests
 
         public bool CheckIsThereContact()
         {
-            manager.Navigator.GoToAddNewPage();
+            manager.Navigator.GoToHomePage();
             return IsElementPresent(By.Name("selected[]"));
         }
         public ContactHelper RemoveContact()
         {
-            driver.Navigate().GoToUrl("http://localhost/addressbook/delete.php?id=5&update=Delete");
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             return this;
         }
 
@@ -112,9 +112,9 @@ namespace WebAddressbookTests
             ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name = 'entry']"));
             foreach (IWebElement element in elements)
             {
-                var lastName = element.FindElement(By.XPath("td[2]")).Text;
                 var firstName = element.FindElement(By.XPath("td[3]")).Text;
-                contacts.Add(new ContactData(lastName, firstName));
+                var lastName = element.FindElement(By.XPath("td[2]")).Text;
+                contacts.Add(new ContactData(firstName, lastName));
             }
             return contacts;
         }

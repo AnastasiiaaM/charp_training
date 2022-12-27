@@ -16,13 +16,13 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationTest()
         {
-            ContactData newContact = new ContactData ("mmmm", "mmmmm");
+            ContactData newContact = new ContactData ("Андрей", "Зимов");
             newContact.Email = "new@s.s";
 
             if (! app.Contact.CheckIsThereContact())
 
             {
-                ContactData contact = new ContactData("asdf", "asdf");
+                ContactData contact = new ContactData("Иван", "Зимов");
                 contact.Email = "asdf@s.s";
 
                 app.Contact.Create(contact);
@@ -43,9 +43,9 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationNameTest()
         {
-            ContactData newContact = new ContactData("mmmm", "mmmm");
-            newContact.Middlename = "mdfgsdf";
-            ContactData contact = new ContactData("asdf", "asdf");
+            ContactData newContact = new ContactData("Алексей", "Петров");
+            newContact.Middlename = "Владимирович";
+            ContactData contact = new ContactData("Вася", "Голубев");
             contact.Email = "asdf@s.s";
 
             if (!app.Contact.CheckIsThereContact())
