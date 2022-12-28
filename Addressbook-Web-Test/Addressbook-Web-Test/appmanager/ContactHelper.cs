@@ -56,12 +56,14 @@ namespace WebAddressbookTests
         public ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            contactCashe = null;
             return this;
         }
 
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[22]")).Click();
+            contactCashe = null;
             return this;
         }
 
@@ -92,6 +94,7 @@ namespace WebAddressbookTests
         public ContactHelper SaveNewContact()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            contactCashe = null;
             return this;
         }
         public ContactHelper ReturnToHomePage()
@@ -105,18 +108,23 @@ namespace WebAddressbookTests
             return this;
         }
 
+        private List<ContactData> contactCashe = null;
+
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name = 'entry']"));
-            foreach (IWebElement element in elements)
+            if (contactCashe == null)
             {
-                var firstName = element.FindElement(By.XPath("td[3]")).Text;
-                var lastName = element.FindElement(By.XPath("td[2]")).Text;
-                contacts.Add(new ContactData(firstName, lastName));
+                contactCashe = new List<ContactData>();
+                manager.Navigator.GoToHomePage();
+                ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name = 'entry']"));
+                foreach (IWebElement element in elements)
+                {
+                    var firstName = element.FindElement(By.XPath("td[3]")).Text;
+                    var lastName = element.FindElement(By.XPath("td[2]")).Text;
+                    contactCashe.Add(new ContactData(firstName, lastName));
+                }
             }
-            return contacts;
+            return new List<ContactData>(contactCashe);
         }
 
     }
