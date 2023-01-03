@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -154,6 +156,7 @@ namespace WebAddressbookTests
             manager.Navigator.GoToHomePage();
             SelectContactForEdit(v);
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string middlename = driver.FindElement(By.Name("middlename")).GetAttribute("value");
             string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
             string address = driver.FindElement(By.Name("address")).GetAttribute("value");
 
@@ -167,6 +170,7 @@ namespace WebAddressbookTests
 
             return new ContactData(firstName, lastName)
             {
+                Middlename = middlename,
                 Address = address, 
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
@@ -175,6 +179,30 @@ namespace WebAddressbookTests
                 Email2 = email2,
                 Email3 = email3
             };
+        }
+
+        public ContactData GetContactInformationDetails(int v)
+        {
+
+            manager.Navigator.GoToHomePage();
+            driver.FindElements(By.Name("entry"))[v]
+                .FindElements(By.TagName("td"))[6]
+                .FindElement(By.TagName("a")).Click();
+            string allDetails = driver.FindElement(By.Id("content")).Text;
+            return new ContactData("", "")
+            {
+                AllDetails = allDetails
+            };
+        }
+
+
+        public int GetNumberOfSearchResults()
+        {
+            manager.Navigator.GoToHomePage();
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
+
         }
     }
 }
