@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,6 +10,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using WebAddressbookTests;
+using System.Xml;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace WebAddressbookTests
 {
@@ -30,7 +34,19 @@ namespace WebAddressbookTests
             return contact;
         }
 
-        [Test, TestCaseSource("RandomGroupDataProvider")]
+        public static IEnumerable<ContactData> GroupDataFromXmlFile()
+        {
+            return (List<ContactData>)new XmlSerializer(typeof(List<ContactData>))
+                .Deserialize(new StreamReader(@"contacts.xml"));
+        }
+
+        public static IEnumerable<ContactData> GroupDataFromJsonFile()
+        {
+            return JsonConvert.DeserializeObject<List<ContactData>>(
+                File.ReadAllText(@"contacts.json"));
+        }
+
+        [Test, TestCaseSource("GroupDataFromJsonFile")]
         public void ContactCreatingTest(ContactData contact)
         {
             List<ContactData> oldContacts = app.Contact.GetContactList();
