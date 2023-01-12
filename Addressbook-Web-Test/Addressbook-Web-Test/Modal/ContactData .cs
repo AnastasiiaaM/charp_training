@@ -33,17 +33,31 @@ namespace WebAddressbookTests
         public string HomePhone { get; set; }
         public string MobilePhone { get; set; }
         public string WorkPhone { get; set; }
-        public string AllPhones 
-        { 
+        public string AllPhones
+        {
             get
-            { 
+            {
                 if (allPhones != null)
                 {
                     return allPhones;
                 }
                 else
                 {
-                    return CleanUpPhone(HomePhone) + CleanUpPhone(MobilePhone) + CleanUpPhone(WorkPhone).Trim();
+                    string bufer = "";
+
+                    if (HomePhone != null && HomePhone != "")
+                    {
+                        bufer = bufer + CleanUpPhone(HomePhone);
+                    }
+                    if (MobilePhone != null && MobilePhone != "")
+                    {
+                        bufer = bufer + "\r\n" + CleanUpPhone(MobilePhone);
+                    }
+                    if (WorkPhone != null && WorkPhone != "")
+                    {
+                        bufer = bufer + "\r\n" + CleanUpPhone(WorkPhone);
+                    }
+                    return bufer;
                 }
             }
             set
@@ -51,16 +65,14 @@ namespace WebAddressbookTests
                 allPhones = value;
             }
         }
-
         private string CleanUpPhone(string phone)
         {
             if (phone == null || phone == "")
             {
                 return "";
             }
-            return Regex.Replace(phone, "[- ()]","") + "\r\n"; 
+            return Regex.Replace(phone, "[- ()]", "");
         }
-
         public string Fax { get; set; }
         public string Email { get; set; }
         public string Email2 { get; set; }
@@ -75,22 +87,27 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return CleanUpEmail(Email) + CleanUpEmail(Email2) + CleanUpEmail(Email3).Trim();
+                    string bufer = "";
+
+                    if (Email != null && Email != "")
+                    {
+                        bufer = bufer + Email;
+                    }
+                    if (Email2 != null && Email2 != "")
+                    {
+                        bufer = bufer + "\r\n" + Email2;
+                    }
+                    if (Email3 != null && Email3 != "")
+                    {
+                        bufer = bufer + "\r\n" + Email3;
+                    }
+                    return bufer;
                 }
             }
             set
             {
                 allEmails = value;
             }
-        }
-
-        private string CleanUpEmail(string email)
-        {
-            if (email == null || email == "")
-            {
-                return "";
-            }
-            return Regex.Replace(email, "[- ()]", "") + "\r\n";
         }
 
         public string Homepage { get; set; }
@@ -177,23 +194,18 @@ namespace WebAddressbookTests
 
             if (email != null && email != "")
             {
-                bufer = bufer + email + "\r\n";
+                bufer = bufer + email ;
             }
             if (email2 != null && email2 != "")
             {
-                bufer = bufer + email2 + "\r\n";
+                bufer = bufer + "\r\n" + email2 ;
             }
             if (email3 != null && email3 != "")
             {
-                bufer = bufer + email3 + "\r\n";
+                bufer = bufer + "\r\n" + email3 ;
             }
             return bufer;
         }
-
-
-
-
-
 
 
         public bool Equals(ContactData other)

@@ -13,8 +13,8 @@ namespace WebAddressbookTests
         [Test]
         public void TextContactInformation()
         {
-            ContactData fromTable = app.Contact.GetContactInformationTable(1);
-            ContactData fromForm = app.Contact.GetContactInformationEditForm(1);
+            ContactData fromTable = app.Contact.GetContactInformationTable(3);
+            ContactData fromForm = app.Contact.GetContactInformationEditForm(3);
 
             //verification
             Assert.AreEqual(fromTable, fromForm);
@@ -27,8 +27,8 @@ namespace WebAddressbookTests
         [Test]
         public void TextContsxtDetailsInformation()
         {
-            ContactData fromForm = app.Contact.GetContactInformationEditForm(0);
-            ContactData fromDetails = app.Contact.GetContactInformationDetails(0);
+            ContactData fromForm = app.Contact.GetContactInformationEditForm(3);
+            ContactData fromDetails = app.Contact.GetContactInformationDetails(3);
 
             Console.Out.Write(fromForm.AllDetails);
 
