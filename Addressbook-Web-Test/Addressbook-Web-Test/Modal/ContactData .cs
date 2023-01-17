@@ -51,11 +51,25 @@ namespace WebAddressbookTests
                     }
                     if (MobilePhone != null && MobilePhone != "")
                     {
-                        bufer = bufer + "\r\n" + CleanUpPhone(MobilePhone);
+                       if (bufer != "")
+                        {
+                            bufer = bufer + "\r\n" + CleanUpPhone(MobilePhone);
+                        }
+                       else
+                        {
+                            bufer = bufer + CleanUpPhone(MobilePhone);
+                        }
                     }
                     if (WorkPhone != null && WorkPhone != "")
                     {
-                        bufer = bufer + "\r\n" + CleanUpPhone(WorkPhone);
+                        if (bufer != "")
+                        {
+                            bufer = bufer + "\r\n" + CleanUpPhone(WorkPhone);
+                        }
+                        else
+                        {
+                            bufer = bufer + CleanUpPhone(WorkPhone);
+                        }
                     }
                     return bufer;
                 }
@@ -95,11 +109,25 @@ namespace WebAddressbookTests
                     }
                     if (Email2 != null && Email2 != "")
                     {
-                        bufer = bufer + "\r\n" + Email2;
+                        if (bufer != "")
+                        {
+                            bufer = bufer + "\r\n" + Email2;
+                        }
+                        else
+                        {
+                            bufer = bufer + Email2;
+                        }
                     }
                     if (Email3 != null && Email3 != "")
                     {
-                        bufer = bufer + "\r\n" + Email3;
+                        if (bufer != "")
+                        {
+                            bufer = bufer + "\r\n" + Email3;
+                        }
+                        else
+                        {
+                            bufer = bufer + Email3;
+                        }
                     }
                     return bufer;
                 }
@@ -198,11 +226,25 @@ namespace WebAddressbookTests
             }
             if (email2 != null && email2 != "")
             {
-                bufer = bufer + "\r\n" + email2 ;
+                if (bufer != "")
+                {
+                    bufer = bufer + "\r\n" + email2;
+                }
+                else
+                {
+                    bufer = bufer + email2;
+                }
             }
             if (email3 != null && email3 != "")
             {
-                bufer = bufer + "\r\n" + email3 ;
+                if (bufer != "")
+                {
+                    bufer = bufer + "\r\n" + email3;
+                }
+                else
+                {
+                    bufer = bufer + email3;
+                }
             }
             return bufer;
         }
