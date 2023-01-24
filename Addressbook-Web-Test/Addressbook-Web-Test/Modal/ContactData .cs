@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text.RegularExpressions;
+using LinqToDB.Mapping;
+using Microsoft.Office.Interop.Excel;
 
 namespace WebAddressbookTests
 {
+    [Table(Name = "addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
@@ -23,15 +26,37 @@ namespace WebAddressbookTests
             Lastname = lastname;
         }
 
+        [Column(Name = "id"), PrimaryKey, Identity]
+        public string Id { get; set; }
+
+        [Column(Name = "firstname"), NotNull]
         public string Firstname { get; set; }
+
+        [Column(Name = "middlename"), NotNull]
         public string Middlename { get; set; }
+
+        [Column(Name = "lastname"), NotNull]
         public string Lastname { get; set; }
+
+        [Column(Name = "nickname"), NotNull]
         public string Nickname { get; set; }
+
+        [Column(Name = "title"), NotNull]
         public string Title { get; set; }
+
+        [Column(Name = "company"), NotNull]
         public string Company { get; set; }
+
+        [Column(Name = "address"), NotNull]
         public string Address { get; set; }
+
+        [Column(Name = "home"), NotNull]
         public string HomePhone { get; set; }
+
+        [Column(Name = "mobile"), NotNull]
         public string MobilePhone { get; set; }
+
+        [Column(Name = "work"), NotNull]
         public string WorkPhone { get; set; }
         public string AllPhones
         {
@@ -87,9 +112,17 @@ namespace WebAddressbookTests
             }
             return Regex.Replace(phone, "[- ()]", "");
         }
+
+        [Column(Name = "fax"), NotNull]
         public string Fax { get; set; }
+
+        [Column(Name = "email"), NotNull]
         public string Email { get; set; }
+ 
+        [Column(Name = "email2"), NotNull]
         public string Email2 { get; set; }
+
+        [Column(Name = "email3"), NotNull]
         public string Email3 { get; set; }
         public string AllEmails
         {
@@ -138,7 +171,10 @@ namespace WebAddressbookTests
             }
         }
 
+        [Column(Name = "homepage"), NotNull]
         public string Homepage { get; set; }
+
+        [Column(Name = "notes"), NotNull]
         public string Notes { get; set; }
         
         
@@ -284,6 +320,14 @@ namespace WebAddressbookTests
                 return Firstname.CompareTo(other.Firstname);
             }
             return Lastname.CompareTo(other.Lastname);
+        }
+
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts select c).ToList();
+            }
         }
     }
 }
