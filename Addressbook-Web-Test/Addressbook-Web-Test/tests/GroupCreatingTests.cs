@@ -115,5 +115,15 @@ namespace WebAddressbookTests
             System.Console.Out.WriteLine(end.Subtract(start));
 
         }
+
+        [Test]
+        public void TextDBConnectivit()
+        {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
+                System.Console.Out.WriteLine(contact.Deprecated);
+            }
+
+        }
     }
 }

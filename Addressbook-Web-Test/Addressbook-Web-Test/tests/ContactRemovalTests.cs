@@ -24,12 +24,12 @@ namespace WebAddressbookTests
             }
 
             List<ContactData> oldContacts = ContactData.GetAll();
-            ContactData toBeRemoved = oldContacts[1];
+            ContactData toBeRemoved = oldContacts[0];
 
             app.Contact.Remove(toBeRemoved);
 
             List<ContactData> newContacts = ContactData.GetAll();
-            oldContacts.RemoveAt(1);
+            oldContacts.RemoveAt(0);
             Assert.AreEqual(oldContacts, newContacts);
         }
     }

@@ -119,6 +119,7 @@
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="Modal\AddressBookDB.cs" />
     <Compile Include="Modal\ContactData .cs" />
+    <Compile Include="Modal\GroupContactRelation.cs" />
     <Compile Include="projectFigure\Circle.cs" />
     <Compile Include="projectFigure\Figure.cs" />
     <Compile Include="Modal\GroupData.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="appmanager\LoginLogoutHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
     <Compile Include="projectFigure\Square.cs" />
+    <Compile Include="tests\AddingContactToGroupTests.cs" />
     <Compile Include="tests\AuthTestBase.cs" />
     <Compile Include="tests\ContactInformationTests.cs" />
     <Compile Include="tests\ContactModificationTests.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="tests\GroupTestBase.cs" />
     <Compile Include="tests\LoginTests.cs" />
+    <Compile Include="tests\RemovingContactFromGroupTests.cs" />
     <Compile Include="tests\SearchTests.cs" />
     <Compile Include="tests\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
