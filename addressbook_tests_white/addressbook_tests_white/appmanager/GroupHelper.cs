@@ -19,6 +19,7 @@ namespace addressbook_tests_white
     public class GroupHelper : HelperBase 
     {
         public static string GROUPWINTITLE = "Group editor";
+        public static string DELETEGROUPWINTITLE = "Delete group";
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
         public List<GroupData> GetGroupList()
@@ -38,6 +39,41 @@ namespace addressbook_tests_white
             return grouplist;
         }
 
+        public void CheckGroupExist()
+        {
+            if (GetGroupCount() <= 1)
+            {
+                GroupData newGroup = new GroupData()
+                {
+                    Name = "GroupForTest"
+                };
+                Add(newGroup);
+            }
+        }
+
+        public int GetGroupCount()
+        {
+            Window dialogue = OpenGroupsDialogue();
+            Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
+            TreeNode root = tree.Nodes[0];
+            int count = root.Nodes.Count();
+            CloseGroupDialogue(dialogue);
+            return count;
+        }
+
+        public void Remove(int index)
+
+        {
+            Window dialogue = OpenGroupsDialogue();
+
+            Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
+            TreeNode root = tree.Nodes[0];
+            root.Nodes[index].Select();
+            Window deleteDialogue = OpenDeletGroupDialog(dialogue);
+            SubmitGroupDelete(deleteDialogue);
+            CloseGroupDialogue(dialogue);
+
+        }
         public void Add(GroupData newGroup)
         {
             Window dialogue = OpenGroupsDialogue();
@@ -48,6 +84,17 @@ namespace addressbook_tests_white
             Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
             CloseGroupDialogue(dialogue);
 
+        }
+
+        private Window OpenDeletGroupDialog(Window dialogue)
+        {
+            dialogue.Get<Button>("uxDeleteAddressButton").Click();
+            return dialogue.ModalWindow(DELETEGROUPWINTITLE);
+        }
+
+        private void SubmitGroupDelete(Window dialogue)
+        {
+            dialogue.Get<Button>("uxOKAddressButton").Click();
         }
 
         private void CloseGroupDialogue(Window dialogue)
