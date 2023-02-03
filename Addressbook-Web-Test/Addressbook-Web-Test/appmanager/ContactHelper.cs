@@ -243,8 +243,8 @@ namespace WebAddressbookTests
             SelectContact(contact.Id);
             SelectGroupToAdd(group.Name);
             ComitAddingContactToGroup();
-            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
-                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+              new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                  .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
         }
 
         public void ComitAddingContactToGroup()
@@ -264,7 +264,7 @@ namespace WebAddressbookTests
 
         public void ClearGroupFilter()
         {
-            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[none]");
         }
 
         public void RemoveContactFromGroup(ContactData contact, GroupData group)
@@ -286,6 +286,24 @@ namespace WebAddressbookTests
         private void SelectGroupFromFilter(string groupName)
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(groupName);
+        }
+
+        public void CheckContactExist(GroupData group)
+        {
+            if (ContactData.GetAll().Except(group.GetContacts()).Count() == 0)
+            {
+                ContactData contact = group.GetContacts().First();
+                RemoveContactFromGroup(contact, group);
+            }
+        }
+
+        public void CheckContactNotExist(GroupData group)
+        {
+            if (group.GetContacts().Count() == 0)
+            {
+                ContactData contact = ContactData.GetAll().First();
+                AddContactToGroup(contact, group);
+            }
         }
     }
 }
