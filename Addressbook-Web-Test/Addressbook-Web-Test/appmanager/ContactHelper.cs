@@ -264,7 +264,7 @@ namespace WebAddressbookTests
 
         public void ClearGroupFilter()
         {
-            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[none]");
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
 
         public void RemoveContactFromGroup(ContactData contact, GroupData group)
