@@ -8,24 +8,24 @@ using NUnit.Framework;
 namespace mantis_tests
 {
     [TestFixture]
-    public class ProjectRemovalTests : AuthTestBase
+    public class ProjectRemovalTests : TestBase
     {
         [SetUp]
         public void Init()
         {
-            app.Project.CreateIfNotExist();
+            app.Api.CreateIfNotExist(account);
         }
 
         [Test]
         public void RemoveProject()
         {
-            List<ProjectData> oldProjectsList = app.Project.GetProjectsList();
+            List<ProjectData> oldProjectsList = app.Api.GetProjectsList(account);
 
-            app.Project.RemoveProject(0);
+            app.Api.RemoveProject(account, 0);
 
-            List<ProjectData> newProjectsList = app.Project.GetProjectsList();
+            List<ProjectData> newProjectsList = app.Api.GetProjectsList(account);
 
-            Assert.AreEqual(oldProjectsList.Count - 1, app.Project.GetCountProjects());
+            Assert.AreEqual(oldProjectsList.Count - 1, app.Api.GetCountProjects(account));
 
             oldProjectsList.RemoveAt(0);
             oldProjectsList.Sort();

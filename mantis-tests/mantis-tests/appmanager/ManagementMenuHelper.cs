@@ -19,16 +19,16 @@ namespace mantis_tests
 
         public void GoToManageProjectPage()
         {
-            if (driver.Url == baseURL + "/mantisbt-2.25.4/manage_proj_page.php")
+            if (driver.Url == baseURL + "/manage_proj_page.php")
             {
                 return;
             }
-            driver.Navigate().GoToUrl(baseURL + "/mantisbt-2.25.4/manage_proj_page.php");
+            driver.Navigate().GoToUrl(baseURL + "/manage_proj_page.php");
         }
 
         public void GoToManageOverviewPage()
         {
-            if (driver.Url == baseURL + "/mantisbt-2.25.4/manage_overview_page.php")
+            if (driver.Url == baseURL + "/manage_overview_page.php")
             {
                 return;
             }
@@ -37,7 +37,7 @@ namespace mantis_tests
 
         public bool CheckOpenManageProjectPage()
         {
-            if (driver.Url == baseURL + "/mantisbt-2.25.4/manage_proj_page.php")
+            if (driver.Url == baseURL + "/manage_proj_page.php")
             {
                 return true;
             }

@@ -14,10 +14,13 @@ namespace mantis_tests
             Password = password;
         }
 
+
         public AccountData() { }
 
         public string Name { get; set; }
         public string Password { get; set; }
+
+        public string Id { get; set; }
         public string Email { get; set; }
     }
 }

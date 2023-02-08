@@ -15,6 +15,8 @@ namespace mantis_tests
         public static bool PERFORM_LONG_UI_CHECKS = false;
         protected ApplicationManager app;
 
+        public AccountData account = new AccountData("administrator", "root");
+
         [TestFixtureSetUp]
         public void SetupApplicationManager()
         {

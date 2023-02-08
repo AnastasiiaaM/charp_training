@@ -20,6 +20,8 @@ namespace mantis_tests
         public FtpHelper Ftp { get;  set; }
         public JamesHelper James { get;  set; }
         public MailHelper Mail { get;  set; }
+        public AdminHelper Admin { get;  set; }
+        public APIHelper Api { get; set; }
         public LoginHelper Login { get;  set; }
         public ManagementMenuHelper Menu { get; set; }
         public ProjectManagementHelper Project { get;  set; }
@@ -29,15 +31,18 @@ namespace mantis_tests
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost";
+            baseURL = "http://localhost/mantisbt-2.25.4";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
+            Admin = new AdminHelper(this, baseURL);
 
             Login = new LoginHelper(this, baseURL);
             Menu = new ManagementMenuHelper(this, baseURL);
             Project= new ProjectManagementHelper(this);
+
+            Api = new APIHelper(this);
         }
 
 

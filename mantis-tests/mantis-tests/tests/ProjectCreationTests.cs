@@ -1,36 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
+using mantis_tests.Mantis;
 using NUnit.Framework;
 
 namespace mantis_tests
 {
     [TestFixture]
-    public class ProjectCreationTests : AuthTestBase
+    public class ProjectCreationTests : TestBase
     {
         [SetUp]
         public void Init()
         {
-            app.Project.DeleteExistingProject(new ProjectData("New project"));
+            app.Api.DeleteExistingProject(account, new ProjectData("New project"));
         }
 
         [Test]
         public void ProjectCreationTest()
         {
-            List<ProjectData> oldProjectsList = app.Project.GetProjectsList();
+            List<ProjectData> oldProjectsList = app.Api.GetProjectsList(account);
 
-            ProjectData project = new ProjectData("Test Project 2 ")
+            ProjectData project = new ProjectData("New project")
             {
-                Status = "в разработке",
-                Visibility = "публичный",
-                Enabled = "true",
+                Status = "development",
+                Visibility = "public",
+                Enabled = "True",
                 Description = "Test Description",
             };
 
-            app.Project.CreateNewProject(project);
+            app.Api.CreateNewProject(account, project);
 
-            Assert.AreEqual(oldProjectsList.Count + 1, app.Project.GetCountProjects());
+            Assert.AreEqual(oldProjectsList.Count + 1, app.Api.GetCountProjects(account));
 
-            List<ProjectData> newProjectsList = app.Project.GetProjectsList();
+            List<ProjectData> newProjectsList = app.Api.GetProjectsList(account);
 
             project.Visibility = "публичный";
             oldProjectsList.Add(project);
@@ -39,5 +41,6 @@ namespace mantis_tests
 
             Assert.AreEqual(oldProjectsList, newProjectsList);
         }
+
     }
 }

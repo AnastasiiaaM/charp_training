@@ -13,7 +13,12 @@ namespace mantis_tests
             ProjectName = projectName;
         }
 
+        public ProjectData()
+        {
+        }
+
         public string ProjectName { get; set; }
+        public string Id { get;  set; }
         public string Status { get; set; }
         public string Enabled { get; set; }
         public string Visibility { get; set; }
