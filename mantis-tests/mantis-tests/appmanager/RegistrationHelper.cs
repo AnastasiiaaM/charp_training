@@ -16,6 +16,7 @@ namespace mantis_tests
 
         public void Register(AccountData account)
         {
+            Logout();
             OpenMainPage();
             OpenRegistrationForm();
             FillRegistrationForm(account);
@@ -65,6 +66,19 @@ namespace mantis_tests
         private void OpenMainPage()
         {
             manager.Driver.Url = "http://localhost/mantisbt-2.25.4/login_page.php";
+        }
+
+        public void Logout()
+        {
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/span")).Click();
+                driver.FindElement(By.LinkText("Logout")).Click();
+            }
+        }
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/span"));
         }
     }
 }

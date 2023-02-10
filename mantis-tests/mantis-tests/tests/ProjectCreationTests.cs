@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace mantis_tests
 {
     [TestFixture]
-    public class ProjectCreationTests : TestBase
+    public class ProjectCreationTests : AuthTestBase
     {
         [SetUp]
         public void Init()
@@ -25,7 +25,7 @@ namespace mantis_tests
                 Status = "development",
                 Visibility = "public",
                 Enabled = "True",
-                Description = "Test Description",
+                Description = GenerateRandomString(100),
             };
 
             app.Api.CreateNewProject(account, project);
@@ -34,7 +34,7 @@ namespace mantis_tests
 
             List<ProjectData> newProjectsList = app.Api.GetProjectsList(account);
 
-            project.Visibility = "публичный";
+            project.Visibility = "public";
             oldProjectsList.Add(project);
             oldProjectsList.Sort();
             newProjectsList.Sort();
